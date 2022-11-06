@@ -1,0 +1,306 @@
+/* Admin Create  */
+
+.content {
+    height:  600px;
+}
+.content a {
+    margin-top: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+.content-body {
+    position: relative;
+    height: 350px;
+}
+
+.content-body textarea {
+    position: absolute;
+    margin: 10px;
+}
+.category span {
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.toggle {
+    position: absolute;
+    right: 50px;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.toggle.active {
+    background-color: #0bdb77;
+}
+
+.toggle.active .toggle-button {
+    left: 28px;
+    transition: 0.5s;
+}
+
+.toggle-button {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    background-color: #d4d2c5;
+    margin: 1px;
+    transition: 0.3s;
+}
+
+/* Admin Index  */
+
+nav ul {
+    list-style: none;
+}
+nav ul li {
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 12px;
+}
+nav ul li i {
+    font-size: 8px;
+}
+.nav-bar ul li {
+    margin-right: 20px;
+    display: inline-block;
+    font-size: 15px;
+}
+.post-view td {
+    padding: 10px;
+    margin: 5px;
+}
+.card {
+    position: relative;
+}
+.share {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+ .top-icon i {
+    display: none;
+    margin-left: 30px;
+    transition: 0.5s;
+}
+.top-icon span {
+    display: none;
+}
+
+.top-icon li:nth-child(2) {
+    position: relative;
+    transition: 0.5s all;
+}
+
+.tag {
+    position: absolute;
+    background: #fff;;
+    font-size: 10px;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    top: 20px;
+    width: 60px;
+    display: none;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+.card:hover .top-icon i {
+    display: block;
+}
+.card:hover .top-icon span {
+    display: block;
+}
+
+.card:hover .tag {
+    display: block;
+}
+.card {
+    transition: 0.5s all;
+}
+
+/* User  */
+  
+
+
+/* Admin Index (Dropdown) */
+
+#allPost {
+    position: relative;
+}
+.allPost {
+    display: none;
+}
+
+.allPost a {
+    line-height: 30px;
+}
+.allPost.active {
+    display: block;
+    padding: 10px;
+    top: 90px;
+    position: absolute;
+    background-color: black;
+    z-index: 2;
+}
+#labels {
+    position: relative;
+}
+.labels ul li, .authors ul li, .sortBy ul li {
+    display: block;
+}
+
+.labels ul li a, .authors ul li a, .sortBy ul li a {
+    text-decoration: none;
+    color: white;
+}
+.labels, .authors, .sortBy {
+    position: absolute;
+    line-height: 30px;
+    padding: 10px;
+    background-color: black;
+    display: none;
+    z-index: 2;
+}
+
+.labels.active , .authors.active, .sortBy.active {
+    display: block;
+}
+
+/* Profile  */
+
+.cover-img {
+    width: 1100px;
+    height: auto;
+}
+
+ #cover {
+    width: 1000px;
+    height: 200px;
+    margin: 40px 0px 0px 50px;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-img {
+    margin-left: 100px;
+    margin-top: -50x;
+}
+
+#profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid black;
+    outline-style: solid;
+    outline-color: white;
+}
+
+.profile-info .input {
+    padding: 5px;
+    margin: 10px 10px 20px 10px;
+    text-align: left;
+    background-color: grey;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-info p {
+    font-size: 14px;
+    margin-left: 30px;
+}
+
+.profile-info small {
+    margin-right: 30px;
+}
+
+.profile-card {
+    border-radius: 20px;
+    width: 330px;
+    margin-bottom: 10px;
+    background-color: grey;
+}
+
+.profile-card img {
+    height: 100px; 
+    width: 100px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+.profile-card p {
+    font-size: 12px;
+    font-weight: 500;
+}
+.profile-card small {
+    font-size: 10px;
+    font-weight: 200;
+}
+
+table {
+    width: 330px;
+    background-color: grey;
+    border-radius: 5px;
+    margin: 10px 0px 20px 0px;
+}
+td {
+    font-size: 10px ;
+    padding: 10px;
+}
+
+th {
+    border-bottom: 2px solid black ;
+    font-size: 12px;
+    padding: 3px;
+}
+
+/* Slider  */
+
+.slider table {
+    color: white;
+    width: 90%;
+    margin-left: 50px;
+}
+
+.slider table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.slider td, th {
+    padding: 10px;
+}
+
+.slider td {
+    font-size: 14px;
+}
+
+.slider th {
+    font-size: 18px;
+    font-weight: 400 ;
+}
+
+/* comment  */
+
+.comment-card {
+    border: 2px solid black;
+    margin: 20px 40px;
+    padding: 20px;
+    background-color: #d4d2c5;
+    border-radius: 20px;
+    color: black;
+}
