@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table -> tinyInteger('role_as')->default('0')->comment('admin=1, user=0');
+            $table->string('auth_type')->default('email');
             $table -> string('dob')->nullable();
             $table -> string('address')->nullable();
             $table->string('phone_no')->nullable();

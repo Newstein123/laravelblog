@@ -27,7 +27,8 @@ class User extends Authenticatable
         'dob',
         'address',
         'gender',
-        'slider_id'
+        'slider_id',
+        'auth_type'
     ];
 
     /**

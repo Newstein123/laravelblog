@@ -1,6 +1,9 @@
 
 @extends('layouts.admin')
 @section('content')
+<style>
+
+</style>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                            <h2>  {{ session('message') }} </h2>
@@ -64,7 +67,7 @@
                                @if ($post->images()->exists())
                                <a href="/admin/posts/{{$post->id}}/edit" class="text-decoration-none text-white"> <img src="/images/{{$post->images()->first()->path}}" class="rounded-start m-2" alt="..." width="100px" height="100px"></a>
                                @else
-                                   <img src="/images/1663000522_1612562486_Tom-Holland-Uncharted-Movie-Has-The-Greatest-Action-Scenes-Of-1024x576.jpg" alt="" width="100px" height="100px" class="rounded-start m-2">
+                                   <img src="/images/cover.jpg" alt="" width="100px" height="100px" class="rounded-start m-2">
                                @endif
                               </div>
                               <div class="col-md-4">
@@ -94,7 +97,19 @@
                                                  <span>{{$post->views->count()}} </span> 
                                                  <i class="fa-regular fa-eye ms-2 mt-2"></i>   
                                             </div></li>
-                                            <li> <small> {{$post->user->name}}</small> <img src="/images/avatar.png" alt="" width="30px" height="30px" style="border-radius: 30px"></li>
+                                            <li> <small> {{$post->user->name}}</small> 
+                                            @if (auth()->user()->images()->exists())
+                                                <img src="/images/{{auth()->user()->images[0]->path}}" alt="" class="post-index-img">
+                                            @else
+                                                @if (auth()->user()->gender == 'M')
+                                                    <img src="/images/male.png" alt="" class="post-index-img">
+                                                @elseif(auth()->user()->gender == 'F')
+                                                <img src="/images/female.png" alt="" class="post-index-img">
+                                                @else
+                                                <img src="/images/other.png" alt="" class="post-index-img">
+                                                @endif
+                                            @endif  
+                                            </li>
                                         </ul>
                                       </div>
                                         <div class="share">

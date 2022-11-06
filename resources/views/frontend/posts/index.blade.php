@@ -1,8 +1,46 @@
 @extends('frontend/layouts/app')
 @section('title', 'Home')
 @section('content')
+<style>
+  #messageBox {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #48d451;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #48d451;
+  }
 
+  .messagebox-container {
+    position: relative;
+  }
+
+  #messageBox::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #48d451;
+    transform: rotate(-45deg);
+    background-color: #48d451;
+    border-top: none;
+    border-right: none;
+  }
+
+</style>
 <div class="container">
+ <div class="messagebox-container">
+  <p id="messageBox" class="mt-3"> Message 
+     <span></span>
+    <span></span>
+    <span></span> </p>
+     
+ </div>
     <div class="row">
         <div class="col-md-8">
             <div class="top-box">

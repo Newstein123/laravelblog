@@ -67,10 +67,16 @@
            <small class="text-muted"> <b>Author</b> </small>
            <div class="d-flex justify-content-around my-2 text-muted">
             @if (auth()->user()->images()->exists())
-                <img src="/images/{{auth()->user()->images[0]->path}}" alt=""  id="profile">
+                <img src="/images/{{auth()->user()->images[0]->path}}" alt="" class="post-index-img" id="profile">
             @else
-            <img src="/images/avatar.png" alt="" id="profile">
+            @if (auth()->user()->gender == 'M')
+                <img src="/images/male.png" alt="" class="post-index-img">
+            @elseif(auth()->user()->gender == 'F')
+            <img src="/images/female.png" alt="" class="post-index-img">
+            @else
+            <img src="/images/other.png" alt="" class="post-index-img">
             @endif
+            @endif  
                 <select name="author_id" id="" class="form-control w-75">
                      @if (auth()->user()->role_as == '1')
                         @foreach ($user as $author)

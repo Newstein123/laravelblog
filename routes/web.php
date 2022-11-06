@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\AuthorProfileController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
+use App\Http\Controllers\authController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,3 +86,12 @@ Route::get('/category/{category}', [FrontendController::class, 'label']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Socail login 
+// Googole 
+Route::get('/auth/google/redirect', [authController::class, 'googleredirect'])->name('googleLogin');
+Route::get('/auth/google/callback', [authController::class, 'googlecallback'])->name('googleCallback');
+
+// facebook 
+Route::get('/auth/facebook/redirect', [authController::class, 'facebookredirect'])->name('facebookLogin');
+Route::get('/auth/facebook/callback', [authController::class, 'facebookcallback'])->name('facebookCallback');

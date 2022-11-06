@@ -38,8 +38,6 @@ a:hover {
 
 .f-toggle {
     position: absolute;
-    /* width: 350px;
-    height: 450px; */
     left: 0px;
     top: 70px;
     display: none;
@@ -59,7 +57,6 @@ a:hover {
 
 .f-toggle.active {
     display: block;
-    transition-duration: 0.7s;
 }
 
 .f-category {

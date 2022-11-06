@@ -11,7 +11,9 @@ class CommentController extends Controller
 {
     public function create($id)
     {   
-
+        if(!auth()->user()) {
+            return redirect('/login');
+        } 
         $post = Post::findOrFail($id);
         $categories = Category::orderBy('id', 'desc')->limit(5)->get();
         $second_categories = Category::orderBy('id', 'desc')->offset(5)->limit(10)->get();
@@ -20,13 +22,15 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        Comment::create([
-            'post_id' => $request->post_id,
-            'name'    => auth()->user()->name,
-            'body'    => $request->body,
-        ]);
+     
+            Comment::create([
+                'post_id' => $request->post_id,
+                'name'    => auth()->user()->name,
+                'body'    => $request->body,
+            ]);
+            
+            return redirect('/post/'. $request->post_id);
         
-        return redirect('/post/'. $request->post_id);
     }
 
     public function edit($id)
