@@ -3,7 +3,9 @@
 use PhpParser\Node\Stmt\Label;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\authController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\admin\PostController;
@@ -15,7 +17,7 @@ use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\AuthorProfileController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
-use App\Http\Controllers\authController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,13 @@ Route::get('/post/comment/{id}/edit', [CommentController::class, 'edit']);
 Route::put('/post/comment/{id}', [CommentController::class, 'update']);
 Route::delete('/post/comment/{id}', [CommentController::class, 'destroy']);
 
+// Message 
+
+Route::get('/admin/message', [AdminMessageController::class, 'index']);
+Route::get('/admin/message/{id}/create', [AdminMessageController::class, 'create']);
+Route::post('/admin/message/{id}', [AdminMessageController::class, 'store']);
+
+
 // Frontend Category 
 
 Route::get('/category/{category}', [FrontendController::class, 'label']);
@@ -95,3 +104,8 @@ Route::get('/auth/google/callback', [authController::class, 'googlecallback'])->
 // facebook 
 Route::get('/auth/facebook/redirect', [authController::class, 'facebookredirect'])->name('facebookLogin');
 Route::get('/auth/facebook/callback', [authController::class, 'facebookcallback'])->name('facebookCallback');
+
+// Message Service 
+
+Route::get('/{id}/message', [MessageController::class, 'index']);
+Route::post('/{id}/message', [MessageController::class, 'store']);

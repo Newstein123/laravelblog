@@ -69,4 +69,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function message()
+    {
+        return $this->hasMany(Message::class, 'from_user_id');
+    }
 }

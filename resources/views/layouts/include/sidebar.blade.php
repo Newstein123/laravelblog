@@ -36,7 +36,7 @@
     @endif
     <li><a href="/admin/comment"class="text-decoration-none text-white text-muted"> <i class="fa-regular fa-comments me-3"></i> Comments </a> </li>
     <li><a href="/admin/slider" class="text-decoration-none text-white text-muted"> <i class="fa-solid fa-image me-3"></i> Slider </a> </li> 
-    <li> <i class="fa-solid fa-message me-3"></i> Messages </li>
+    <li> <a href="/admin/message" class="text-decoration-none text-white text-muted"><i class="fa-solid fa-message me-3"></i> Messages </a> </li>
     <br>
     
 

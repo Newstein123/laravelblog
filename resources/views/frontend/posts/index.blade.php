@@ -6,12 +6,17 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 100px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     border: 1px solid #48d451;
     border-radius: 3px;
     text-align: center;
     background-color: #48d451;
+    transition: 0.5s all ease-in;
+  }
+
+  #messageBox:hover {
+    transform: scale(1.1);
   }
 
   .messagebox-container {
@@ -34,13 +39,11 @@
 
 </style>
 <div class="container">
+ @if (auth()->user())
  <div class="messagebox-container">
-  <p id="messageBox" class="mt-3"> Message 
-     <span></span>
-    <span></span>
-    <span></span> </p>
-     
+  <a href="/{{auth()->id()}}/message"> <p id="messageBox" class="mt-3">  Message </p>  </a>    
  </div>
+ @endif
     <div class="row">
         <div class="col-md-8">
             <div class="top-box">

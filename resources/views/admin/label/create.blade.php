@@ -1,5 +1,6 @@
 
 @extends('layouts.admin')
+@section('title', 'Label')
 @section('content')
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
