@@ -47,7 +47,7 @@
             @else
                 <div class="col-md-8">
                     <h3 class="text-dark text-muted">
-                        There is no post 
+                        There is no post for "{{$search}}"
                     </h3>
                     <a href="/" class="btn btn-info btn-sm float-end"> Back to post </a>
                 </div>

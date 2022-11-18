@@ -152,8 +152,8 @@
                             <div class="col-6 p-4">
                                 <small class="text-muted text-center"> Comments </small> <br>
                                 <span> <i class="fa-solid fa-comment me-2"></i></i> 
-                                    
-                                    {{-- {{$post->user->post->comments->count()}}</span> --}}
+                                    {{count($commentarr)}}
+                                    </span>
                             </div>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ $second_categories = App\Models\Category::orderBy('id', 'desc')->offset(5)->limi
                         <img src="/images/login.png" alt="" width="100%">
                     </div>
                     <div class="col-md-6 align-items-center" style="margin-top: 5%">
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('register') }}">
                                 @csrf
                                 <h3 class="text-center mb-5"> Register Your Account </h3>
                               

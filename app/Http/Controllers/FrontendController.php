@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Models\Post;
 use App\Models\View;
 use App\Models\Device;
@@ -12,6 +11,7 @@ use App\Models\Category;
 use Illuminate\Support\Arr;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Stevebauman\Location\Facades\Location;
 
 class FrontendController extends Controller
@@ -54,6 +54,7 @@ class FrontendController extends Controller
                 $posts = Post::latest('id')->where('title', 'like', "%$search%" )->paginate(5)->withQueryString();        
                 return view('frontend/posts/search', compact('posts', 'categories', 'second_categories'));
             } else {
+                $search = $request->input('search');
                 $posts = Post::all();
                 $array = [];
                 foreach($posts as $post) { 
@@ -72,7 +73,7 @@ class FrontendController extends Controller
                 $postone = Post::orderBy('id','desc')->limit(1)->get();
                 $midposts = Post::orderBy('id','desc')->offset(1)->limit(4)->get();
                 $allposts = Post::orderby('id', 'desc')->offset(5)->limit(30)->get();
-                return view('frontend/posts/index', compact('trendingNews', 'postone', 'midposts', 'allposts', 'categories', 'second_categories'));
+                return view('frontend/posts/index', compact('trendingNews', 'postone', 'midposts', 'allposts', 'categories', 'second_categories', 'search'));
             }
             
            
@@ -85,7 +86,7 @@ class FrontendController extends Controller
         $second_categories = Category::orderBy('id', 'desc')->offset(5)->limit(10)->get();
         if($search = $request->input('search')) {  
             $posts = Post::latest('id')->where('title', 'like', "%$search%" )->paginate(5)->withQueryString();        
-            return view('frontend/posts/search', compact('posts', 'categories', 'second_categories'));
+            return view('frontend/posts/search', compact('posts', 'categories', 'second_categories', 'search'));
         }
         $posts = Post::all();
         $array = [];
@@ -102,15 +103,22 @@ class FrontendController extends Controller
                 }
             }
         $post = Post::findOrFail($id);
-        // $author_posts = Post::where('user_id', $post->user->id)->pluck('id')->toArray();
-        // // dd($author_post);
-        // while($author_posts) {
-        //     $comment = Comment::where('post_id', $author_posts)->get();
-        //     dd($comment);
-        //    $comment_count = count($comment);
-        //     dd($comment_count);
-        // }
-       
+        
+       $user_post = Post::where('user_id', $post->user->id)->pluck('id')->toArray();
+       $commentarr = [];
+
+       foreach($user_post as $postId => $count)  {
+            $comments = Comment::where('post_id', $count)->pluck('id')->toArray();
+            if(count($comments) > 0) {
+                foreach($comments as $comment => $countNumber) {
+                    array_push($commentarr, $countNumber);
+                }
+             
+            }
+        }
+
+        // dd($commentarr);
+
         $view_count = View::updateOrCreate([
             'post_id' => $post->id,
             'views' => $request->getClientIp()
@@ -129,7 +137,7 @@ class FrontendController extends Controller
         }
         
 
-        return view('frontend/posts/show', compact('post','posts', 'comments',  'comment', 'categories', 'second_categories', 'article_count', 'view_count', 'trendingNews', 'midposts'));
+        return view('frontend/posts/show', compact('post','posts', 'comments',  'comment', 'categories', 'second_categories', 'article_count', 'view_count', 'trendingNews', 'midposts', 'commentarr', 'search'));
     }
 
     public function label(string $category)

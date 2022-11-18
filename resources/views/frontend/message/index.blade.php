@@ -77,6 +77,7 @@
            @endforeach
            @foreach ($replys as $reply)
            <div class="d-flex align-items-center justify-content-end reply">
+               <p class="text-body"> {{$reply->body}} </p>
                @if(!$reply->user->images()->exists())
                 @if ($reply->user->gender == 'M') 
                 <img src="/images/male.png" alt="" class="me-3" id ="profile"> 
@@ -88,7 +89,6 @@
                 @else
                <img src="/images/{{$reply->user->images->first()->path}}" alt="" id="profile" class="me-3">
                @endif
-               <p class="text-body"> {{$reply->body}} </p>
             </div>
            @endforeach
            <form action="/{{auth()->id()}}/message" method="POST">

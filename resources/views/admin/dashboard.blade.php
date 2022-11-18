@@ -138,17 +138,19 @@
     <div class="col-md-3 comment">
       <div class="mx-2 my-2">
         <h5> Latest Comments </h5>     
+          @if ($comments->count() > 0)
           @foreach ($comments as $comment)
           <div class="my-3">
             <small> </small>
-            <p> {{$comment->comment_body}} </p>
+            <p> {{$comment->body}} </p>
             <div class="d-flex justify-content-between">
                 <p> {{$comment->name}} </p>
-                <small> {{$comment->created_at->diffForHumans()}} </small>
+                <small> {{$comment->created_at}} </small>
             </div>
           </div>
           <hr> 
-       @endforeach         
+       @endforeach 
+          @endif        
       </div>     
     </div>
 
