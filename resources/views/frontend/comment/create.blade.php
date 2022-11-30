@@ -2,10 +2,10 @@
 @section('title', 'Search')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <form action="/post/comment" method="POST">
             @csrf
-        <div class="col-md-10">
+        <div class="col-md-10 justify-content-center align-items-center">
             <div class="card">
                 <div class="card-header">
                     Post a comment on : <br>

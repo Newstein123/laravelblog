@@ -77,7 +77,7 @@
             <img src="/images/other.png" alt="" class="post-index-img">
             @endif
             @endif  
-                <select name="author_id" id="" class="form-control w-75">
+                <select name="user_id" id="" class="form-control w-75">
                      @if (auth()->user()->role_as == '1')
                         @foreach ($user as $author)
                         <option value="{{$author->id}}">         
@@ -102,7 +102,7 @@
            </div>
 
            <small class="text-muted"> <b> Labels </b> </small> <br>
-           <select class="form-control selectpicker my-3 w-75" name="categoryIds[]" multiple data-live-search="true">
+           <select class="form-control selectpicker my-3 w-75" name="categoryIds[]" multiple data-live-search="true" required>
                 @foreach ($categories as $category)
                    <option value="{{$category->id}}"
                     @if(in_array($category->id, old('categoryIds', [])))

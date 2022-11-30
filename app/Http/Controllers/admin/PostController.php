@@ -86,11 +86,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {   
+        
        $post =  Post::create([
             'title' => $request->title,
             'body' => $request->body,
             'slider_id' => $request->slider_id,
-            'user_id' => $request->author_id,
+            'user_id' => $request->user_id,
+            'author_id' => auth()->user()->author->id,
         ]);
 
         $categoryIds = $request->categoryIds;

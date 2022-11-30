@@ -107,21 +107,25 @@
                 @php
                 $limit = 2;
                 @endphp
-                    @foreach ($posts as $index => $post)
+                    @foreach ($relatedposts as $index => $relatedpost)
                     @if ($index > $limit)
                         @break
                     @endif
                     <hr>
-                    <p> <a href="/post/{{$post->id}}"> {{$post->title}}</a></p>
+                    @if ($relatedpost->id == $post->id)
+                        @continue
+                    @else
+                    <p> <a href="/post/{{$relatedpost->id}}"> {{$relatedpost->title}}</a></p>
                     <div class="d-flex justify-content-between mt-3">
                         <p class="me-3 category"> <a href=""> 
-                        @foreach ($post->categories as $category)
+                        @foreach ($relatedpost->categories as $category)
                             {{$category->name}}
                         @endforeach    
                         </a> </p>
-                        <span>{{$post->created_at->diffForHumans()}}  </span>
+                        <span>{{$relatedpost->created_at->diffForHumans()}}  </span>
                     </div>
                     <hr>
+                    @endif
                     @endforeach
             </div>
 
@@ -136,7 +140,7 @@
                        @else 
                        <img src="/images/avatar.png" alt="" width="70px" height="70px" id="author-img"> 
                        @endif
-                       <a href="/author/{{$post->user->author->id}}"> <p class="mt-3 text-center"> <b> {{$post->user->author->display_name}}</b></p></a>
+                       <a href="/author/{{$post->author_id}}"> <p class="mt-3 text-center"> <b> {{$post->user->author->display_name}}</b></p></a>
                        <small class="text-muted"> <i> {{$post->user->author->current_job}} </i></small>
                        <div class="container text-center my-3">
                            <a href="{{$post->user->author->facebook}}" class="me-2">  <img src="/images/facebook.png" alt="" width="30px" height="30px"></a>

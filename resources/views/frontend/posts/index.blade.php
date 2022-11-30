@@ -70,7 +70,7 @@
                 @foreach ($midposts as $post)
                 <div class="news-card me-3 shadow-sm">
                   @if($post->images()->exists())
-                    <img src="/images/{{$post->images[0]->path}}" alt="" width="200px">
+                    <img src="/images/{{$post->images[0]->path}}" alt="" width="200px" height="200px">
                   @else 
                     <img src="/images/test.jpg" alt="" width="100%">
                   @endif

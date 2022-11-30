@@ -117,8 +117,6 @@ class FrontendController extends Controller
             }
         }
 
-        // dd($commentarr);
-
         $view_count = View::updateOrCreate([
             'post_id' => $post->id,
             'views' => $request->getClientIp()
@@ -127,17 +125,16 @@ class FrontendController extends Controller
         $article_count = Post::where('user_id', $post->user->id)->count();
         $comments = Comment::where('post_id', $id)->get();
         $comment = Comment::all();
-        $midposts = Post::orderBy('id','desc')->offset(1)->limit(4)->get();
         $category = $post->categories[0]->name;
         
         $category = Category::where('name', $category)->first();
 
         if($category) { 
-            $posts = $category->posts()->get();
+            $relatedposts = $category->posts()->get();
         }
         
 
-        return view('frontend/posts/show', compact('post','posts', 'comments',  'comment', 'categories', 'second_categories', 'article_count', 'view_count', 'trendingNews', 'midposts', 'commentarr', 'search'));
+        return view('frontend/posts/show', compact('relatedposts','post', 'comments',  'comment', 'categories', 'second_categories', 'article_count', 'view_count', 'trendingNews', 'commentarr', 'search'));
     }
 
     public function label(string $category)

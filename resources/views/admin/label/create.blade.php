@@ -65,12 +65,12 @@
                       <input  onchange="newLabel(true)" type="radio" name="add_label" id="" value="new_label">
 
                       <small> <b> Add New Label </b> </small> <br>
-                        <input type="text" name="name" placeholder="Add new label" style="display: none" id="new_label" class="form-control my-3" required>
+                        <input type="text" name="name" placeholder="Add new label" style="display: none" id="new_label" class="form-control my-3" >
 
                         <input onchange="newLabel(false)" type="radio" name="add_label" value="existing_label"  checked id="">
 
                         <small> <b> Select From Existing Label </b></small>
-                        <select id="category_ids" class="form-control selectpicker my-3" name="categoryIds[]" multiple data-live-search= 'true'> 
+                        <select id="category_ids" class="form-control selectpicker my-3 d-block" name="categoryIds[]" multiple data-live-search= 'true'> 
                           @foreach ($categories as $category)        
                             <option value="{{$category->id}}"
                               @if(in_array($category->id, old('categoryIds', $oldCategoryId)))
@@ -115,11 +115,11 @@
               }
 
               const show_me = document.getElementById('new_label');
-              const hide_me = document.getElementById('category_ids');
-              
-
+              const hide_me = document.querySelector('#category_ids');
+ 
               newLabel = (e) => { 
                 show_me.style.display = e? 'block': 'none';
+                hide_me.style.display = 'none'
               }
 
               </script>
