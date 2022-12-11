@@ -15,4 +15,11 @@ class HomeController extends Controller
         $post = Post::orderBy('id', 'desc')->get();
         return HomeResource::collection($post);
    }
+
+   public function show($id) {
+      $post = Post::findOrFail($id);
+      $comments = $post->comments;
+      return new HomeResource($post);
+   }
+
 }

@@ -7,17 +7,18 @@
                 <h4> {{session('message')}}</h4>
             </div>
         @endif
-   {{-- @if ($author->user->slide->images()->exists())
+   @if ($author->user->slider->images()->exists())
    <img src="/images/{{$author->user->slider->images[0]->path}}" alt="">
    @else
    <img src="/images/avatar.png" alt="">
-   @endif --}}
+   @endif
 </div>
 <div class="container">
         <div class="row profile justify-content-center align-items-center">
             <div class="col-md-10">
                 <div class="d-flex  justify-content-between">
                     <div>
+                       
                         @if ($author->user->images()->exists())
                         <img src="/images/{{$author->user->images[0]->path}}" alt="">
                         @else

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\api\AuthorController;
+use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\CategoryController;
+use App\Http\Controllers\api\CommentController;
 use App\Http\Controllers\api\FrontendController;
 use App\Http\Controllers\api\HomeController;
 use Illuminate\Http\Request;
@@ -23,3 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/home', HomeController::class);
 Route::apiResource('/category', CategoryController::class);
+Route::apiResource('/user', UserController::class );
+Route::apiResource('/author', AuthorController::class );
+Route::apiResource('/comment', CommentController::class );

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class HomeResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,14 +16,10 @@ class HomeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'name' => $this->name,
             'body' => $this->body,
+            'post_id' => $this->post_id,
             'time' => $this->created_at->toFormattedDateString(),
-            'categories' => CategoryResource::collection($this->categories),
-            'image' => ImageResource::collection($this->images),
-            'slider' => new SliderResource($this->slider),
-            'author' => new AuthorResource($this->user->author),
-            'comments' => CommentResource::collection($this->comments)
         ];
     }
 }
